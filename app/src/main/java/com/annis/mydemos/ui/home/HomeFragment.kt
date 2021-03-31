@@ -1,26 +1,26 @@
 package com.annis.mydemos.ui.home
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
 import androidx.core.content.FileProvider.getUriForFile
+import com.annis.mydemos.utils.FileUtil
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +28,7 @@ import java.util.*
 open class HomeFragment : Fragment() {
     companion object {
         const val INTENT_CAMERA_REQUEST = 1254
+        const val INTENT_CAMERA_CROP_REQUEST = 1241
         const val PERMISSION_REQUEST_CAMERA = 2345
     }
 
@@ -56,10 +57,10 @@ open class HomeFragment : Fragment() {
             when {
                 ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) ==
                         PackageManager.PERMISSION_GRANTED -> {
-                    openCamera()
+                    checkStorage()
                 }
                 shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
-                    openCamera()
+                    checkStorage()
                 }
                 else -> {
                     requestPermissions(
@@ -72,23 +73,78 @@ open class HomeFragment : Fragment() {
         return root
     }
 
+    private fun checkStorage() {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) ==
+                    PackageManager.PERMISSION_GRANTED -> {
+                openCamera()
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
+                openCamera()
+            }
+            else -> {
+                requestPermissions(
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    PERMISSION_REQUEST_CAMERA
+                )
+            }
+        }
+    }
+
     private var photoFile: File? = null
+    private var cropFile: File? = null
+    private var photoUri: Uri? = null
+    private var cropUri: Uri? = null
     private fun openCamera() {
+        val imageDir = File(requireContext().filesDir, "images")
+        if (!imageDir.exists()) {
+            imageDir.mkdir()
+        }
+        FileUtil.setAuthority("com.annis.mydemos.provider");
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date())
+
+        photoFile = File(imageDir, "$format.jpg")
+        photoUri = FileUtil.getUri(requireContext(), photoFile!!)
+
+//        cropFile = File(imageDir, "${format}_crop.jpg")
+//        cropFile = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "${format}_crop.jpg")
+        cropFile = File(Environment.getExternalStorageDirectory(), "${format}_crop.jpg")
+        cropUri = FileUtil.getUri(requireContext(), cropFile!!)
+        Log.w("Storage", cropFile!!.absolutePath)
+        withoutCrop(photoUri!!)
+    }
+
+
+    private fun withoutCrop(uri: Uri) {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
             putExtra("outputFormat", "JPEG")
-            val imagePath = File(requireContext().filesDir, "images")
-            if (!imagePath.exists()) {
-                imagePath.mkdir()
-            }
-
-            val format = SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date())
-            photoFile = File(imagePath, "$format.jpg")
-            val contentUri =
-                getUriForFile(requireContext(), "com.annis.mydemos.provider", photoFile!!)
-
-            putExtra(MediaStore.EXTRA_OUTPUT, contentUri)
+            putExtra(MediaStore.EXTRA_OUTPUT, uri)
         }.let {
             startActivityForResult(it, INTENT_CAMERA_REQUEST)
+        }
+    }
+
+    private fun withCrop(uri: Uri, outputUri: Uri) {
+        Intent("com.android.camera.action.CROP").apply {
+            setDataAndType(uri, "image/*")
+            putExtra("crop", "true")
+            putExtra("outputX", 200)
+            putExtra("outputY", 200)
+            putExtra("aspectX", 1)
+            putExtra("aspectY", 1)
+            putExtra("scale", true)
+            putExtra("return-data", false)
+            putExtra("noFaceDetection", true)
+
+            putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+            putExtra(MediaStore.EXTRA_OUTPUT, outputUri)
+
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        }.let {
+            startActivityForResult(it, INTENT_CAMERA_CROP_REQUEST)
         }
     }
 
@@ -96,12 +152,16 @@ open class HomeFragment : Fragment() {
         when (requestCode) {
             INTENT_CAMERA_REQUEST -> {
                 if (photoFile?.exists() == true) {
-                    var opt = BitmapFactory.Options()
-                    opt.inJustDecodeBounds = true
-                    val bitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath, opt)
+//                    var opt = BitmapFactory.Options()
+//                    opt.inJustDecodeBounds = true
+//                    val bitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath, opt)
+//                    Bitmap.createBitmap(bitmap,0,0,bitmap.width,bitmap.height, Matrix().apply { setScale(200.0f,400.0f) },true)
 
-                    Bitmap.createBitmap(bitmap,0,0,bitmap.width,bitmap.height, Matrix().apply { setScale(200.0f,400.0f) },true)
+                    withCrop(photoUri!!, cropUri!!)
                 }
+            }
+            INTENT_CAMERA_CROP_REQUEST -> {
+
             }
             else -> {
                 super.onActivityResult(requestCode, resultCode, data)
