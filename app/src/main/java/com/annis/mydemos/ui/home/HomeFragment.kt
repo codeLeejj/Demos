@@ -30,6 +30,7 @@ open class HomeFragment : Fragment() {
         const val INTENT_CAMERA_REQUEST = 1254
         const val INTENT_CAMERA_CROP_REQUEST = 1241
         const val PERMISSION_REQUEST_CAMERA = 2345
+        const val TAG = "HomeFragment"
     }
 
     private lateinit var homeViewModel: HomeViewModel
@@ -140,7 +141,7 @@ open class HomeFragment : Fragment() {
             putExtra("noFaceDetection", true)
 
             putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-            putExtra(MediaStore.EXTRA_OUTPUT, outputUri)
+//            putExtra(MediaStore.EXTRA_OUTPUT, outputUri)
 
             flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
         }.let {
@@ -161,7 +162,11 @@ open class HomeFragment : Fragment() {
                 }
             }
             INTENT_CAMERA_CROP_REQUEST -> {
+                val cropImageUri = data?.data
 
+                FileUtil.getPathFromUri(activity, cropImageUri).let {
+                    Log.w(TAG, it)
+                }
             }
             else -> {
                 super.onActivityResult(requestCode, resultCode, data)
