@@ -10,7 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.annis.mydemos.databinding.ActivityMainBinding
-import com.annis.mydemos.ui.home.HomeFragment
+import com.annis.mydemos.ui.main.systemTest.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 

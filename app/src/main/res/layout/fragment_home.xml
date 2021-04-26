@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.main.systemTest.HomeFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -22,5 +22,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="拍照" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abtSoftCallListener"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="软件呼叫监听" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abtNetworkStateListener"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网络状态监听" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.annis.mydemos.ui.home
+package com.annis.mydemos.ui.main.systemTest
 
 import android.Manifest
 import android.content.Intent
@@ -19,7 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
-import androidx.core.content.FileProvider.getUriForFile
+import com.annis.mydemos.ui.system.NetWorkStateActivity
+import com.annis.mydemos.ui.system.SoftCallListenerActivity
 import com.annis.mydemos.utils.FileUtil
 import java.io.*
 import java.text.SimpleDateFormat
@@ -70,6 +71,13 @@ open class HomeFragment : Fragment() {
                     )
                 }
             }
+        }
+
+        binding.abtSoftCallListener.setOnClickListener {
+            startActivity(Intent(activity, SoftCallListenerActivity::class.java))
+        }
+        binding.abtNetworkStateListener.setOnClickListener {
+            startActivity(Intent(activity, NetWorkStateActivity::class.java))
         }
         return root
     }
