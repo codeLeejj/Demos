@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
+import com.annis.mydemos.ui.system.LoaderActivity
 import com.annis.mydemos.ui.system.NetWorkStateActivity
 import com.annis.mydemos.ui.system.SoftCallListenerActivity
 import com.annis.mydemos.utils.FileUtil
@@ -78,6 +79,9 @@ open class HomeFragment : Fragment() {
         }
         binding.abtNetworkStateListener.setOnClickListener {
             startActivity(Intent(activity, NetWorkStateActivity::class.java))
+        }
+        binding.abtStudyLoader.setOnClickListener {
+            startActivity(Intent(activity, LoaderActivity::class.java))
         }
         return root
     }
