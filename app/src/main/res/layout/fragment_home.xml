@@ -38,5 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Loader" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abtService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Service" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

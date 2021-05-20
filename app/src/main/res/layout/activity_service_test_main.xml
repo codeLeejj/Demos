@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.system.serviceTest.ServiceTestMainActivity">
+
+    <Button
+        android:id="@+id/tvStartService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="StartService"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tvBindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BindService"
+        app:layout_constraintTop_toBottomOf="@+id/tvStartService" />
+</androidx.constraintlayout.widget.ConstraintLayout>

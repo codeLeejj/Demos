@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.provider.ContactsContract
 import android.util.Log
 import android.view.MotionEvent
@@ -103,7 +104,7 @@ class LoaderActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Any> {
         } else {
 
         }
-
+        var handler = Looper.myLooper()?.let { Handler(it) }
     }
 
 

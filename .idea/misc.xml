@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/activity_loader.xml" value="0.42346014492753625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24372759856630824" />
+        <entry key="app/src/main/res/layout/activity_service_test_main.xml" value="0.12545289855072464" />
         <entry key="app/src/main/res/layout/activity_soft_call_listener.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/content_loader.xml" value="0.5380208333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />

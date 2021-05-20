@@ -22,6 +22,7 @@ import com.annis.mydemos.databinding.FragmentHomeBinding
 import com.annis.mydemos.ui.system.LoaderActivity
 import com.annis.mydemos.ui.system.NetWorkStateActivity
 import com.annis.mydemos.ui.system.SoftCallListenerActivity
+import com.annis.mydemos.ui.system.serviceTest.ServiceTestMainActivity
 import com.annis.mydemos.utils.FileUtil
 import java.io.*
 import java.text.SimpleDateFormat
@@ -82,6 +83,9 @@ open class HomeFragment : Fragment() {
         }
         binding.abtStudyLoader.setOnClickListener {
             startActivity(Intent(activity, LoaderActivity::class.java))
+        }
+        binding.abtService.setOnClickListener {
+            startActivity(Intent(activity, ServiceTestMainActivity::class.java))
         }
         return root
     }
