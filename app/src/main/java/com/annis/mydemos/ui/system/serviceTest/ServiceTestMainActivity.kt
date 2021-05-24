@@ -17,12 +17,11 @@ class ServiceTestMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_service_test_main)
 
         findViewById<Button>(R.id.tvStartService).setOnClickListener {
-
             Log.w("ServiceTest", "Thread Id:${Thread.currentThread().id}")
             startService(Intent(this, StartServiceTest::class.java))
         }
-        findViewById<Button>(R.id.tvBindService).setOnClickListener {
 
+        findViewById<Button>(R.id.tvBindService).setOnClickListener {
             mConn = MyConn()
             bindService(Intent(this, BindServiceTest::class.java), mConn, Service.BIND_AUTO_CREATE)
         }

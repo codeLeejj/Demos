@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
+import com.annis.mydemos.ui.system.BroadcastTestActivity
 import com.annis.mydemos.ui.system.LoaderActivity
 import com.annis.mydemos.ui.system.NetWorkStateActivity
 import com.annis.mydemos.ui.system.SoftCallListenerActivity
@@ -86,6 +87,9 @@ open class HomeFragment : Fragment() {
         }
         binding.abtService.setOnClickListener {
             startActivity(Intent(activity, ServiceTestMainActivity::class.java))
+        }
+        binding.abtStickyBroadcast.setOnClickListener {
+            startActivity(Intent(activity, BroadcastTestActivity::class.java))
         }
         return root
     }
