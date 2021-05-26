@@ -12,6 +12,16 @@ class StartServiceTest : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.w("ServiceTest", "Thread Id:${Thread.currentThread().id}")
+        Log.w("ServiceTest", "Start Service onCreate,Thread Id:${Thread.currentThread().id}")
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.w("ServiceTest", "Start Service onStartCommand")
+        return super.onStartCommand(intent, flags, startId)
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.w("ServiceTest", "Start Service onDestroy")
     }
 }
