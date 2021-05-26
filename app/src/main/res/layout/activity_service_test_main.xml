@@ -14,9 +14,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/tvStopService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="StopService"
+        app:layout_constraintTop_toBottomOf="@+id/tvStartService" />
+
+    <Button
         android:id="@+id/tvBindService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BindService"
-        app:layout_constraintTop_toBottomOf="@+id/tvStartService" />
+        app:layout_constraintTop_toBottomOf="@+id/tvStopService" />
+  <Button
+        android:id="@+id/tvUnbindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UnbindService"
+        app:layout_constraintTop_toBottomOf="@+id/tvBindService" />
 </androidx.constraintlayout.widget.ConstraintLayout>

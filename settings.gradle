@@ -1,2 +1,3 @@
 rootProject.name = "MyDemos"
 include ':app'
+include ':lib-model'

@@ -17,27 +17,39 @@ class ServiceTestMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_service_test_main)
 
         findViewById<Button>(R.id.tvStartService).setOnClickListener {
-            Log.w("ServiceTest", "Thread Id:${Thread.currentThread().id}")
+            Log.w("ServiceTest", "Start Service Thread Id:${Thread.currentThread().id}")
             startService(Intent(this, StartServiceTest::class.java))
+        }
+        findViewById<Button>(R.id.tvStopService).setOnClickListener {
+//            stopService(Intent(this, StartServiceTest::class.java))
+            stopService(Intent(this, StartServiceTest::class.java))
         }
 
         findViewById<Button>(R.id.tvBindService).setOnClickListener {
-            mConn = MyConn()
-            bindService(Intent(this, BindServiceTest::class.java), mConn, Service.BIND_AUTO_CREATE)
+            Log.w("ServiceTest", "Bind Service click")
+            bindService(Intent(this, BindServiceTest::class.java), mConn, Service.BIND_ABOVE_CLIENT)
+        }
+
+        findViewById<Button>(R.id.tvUnbindService).setOnClickListener {
+            service1?.let {
+                unbindService(mConn)
+            }
         }
     }
 
-    lateinit var mConn: MyConn
-
-    class MyConn : ServiceConnection {
+    var service1: BindServiceTest? = null
+    var mConn = object : ServiceConnection {
+        var binder: BindServiceTest.MyBinder? = null
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            Log.w("ServiceTest", "Bind Service onServiceConnected ")
 
+            binder = (service as BindServiceTest.MyBinder)
+            service1 = binder?.getService()
+            Log.w("ServiceTest", "获取 tag:${binder?.getService()?.tag}")
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
-            //这是意外中断的时候才会调用的方法
-
+            Log.w("ServiceTest", "Bind Service onServiceDisconnected")
         }
-
     }
 }
