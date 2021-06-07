@@ -1,4 +1,4 @@
-package com.annis.mydemos.ui.main.notifications
+package com.annis.mydemos.ui.main.uiTest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

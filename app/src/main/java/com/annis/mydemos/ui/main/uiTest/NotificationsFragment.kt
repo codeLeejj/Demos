@@ -1,4 +1,4 @@
-package com.annis.mydemos.ui.main.notifications
+package com.annis.mydemos.ui.main.uiTest
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,20 +20,24 @@ class NotificationsFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel =
-                ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = binding.textNotifications
+//        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
+        binding.btTouchEvent.setOnClickListener {
+
+        }
+
         return root
     }
 

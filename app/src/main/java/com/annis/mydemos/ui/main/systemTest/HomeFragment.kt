@@ -19,10 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
-import com.annis.mydemos.ui.system.BroadcastTestActivity
-import com.annis.mydemos.ui.system.LoaderActivity
-import com.annis.mydemos.ui.system.NetWorkStateActivity
-import com.annis.mydemos.ui.system.SoftCallListenerActivity
+import com.annis.mydemos.ui.system.*
+import com.annis.mydemos.ui.system.launchModeTest.StandardActivity
 import com.annis.mydemos.ui.system.serviceTest.ServiceTestMainActivity
 import com.annis.mydemos.utils.FileUtil
 import java.io.*
@@ -90,6 +88,12 @@ open class HomeFragment : Fragment() {
         }
         binding.abtStickyBroadcast.setOnClickListener {
             startActivity(Intent(activity, BroadcastTestActivity::class.java))
+        }
+        binding.abtHandler.setOnClickListener {
+            startActivity(Intent(activity, HandlerTestActivity::class.java))
+        }
+        binding.abtLaunchMode.setOnClickListener {
+            startActivity(Intent(activity, StandardActivity::class.java))
         }
         return root
     }

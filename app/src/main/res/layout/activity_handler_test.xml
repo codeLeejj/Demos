@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.system.HandlerTestActivity">
+
+    <Button
+        android:id="@+id/btSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btStartThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="StartThread"
+        app:layout_constraintTop_toBottomOf="@+id/btSend" />
+    <Button
+        android:id="@+id/btHandlerThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HandlerThread"
+        app:layout_constraintTop_toBottomOf="@+id/btStartThread" />
+</androidx.constraintlayout.widget.ConstraintLayout>

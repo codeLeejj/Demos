@@ -48,5 +48,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="StickyBroadcast" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abtHandler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HandlerTest" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abtLaunchMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LaunchModeTest" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

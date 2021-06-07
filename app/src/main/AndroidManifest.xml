@@ -23,10 +23,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDemos">
+        <activity android:name=".ui.system.launchModeTest.SingleInstanceActivity"/>
+        <activity android:name=".ui.system.launchModeTest.SingleTopActivity" />
+        <activity android:name=".ui.system.launchModeTest.StandardActivity"
+            android:configChanges=""/>
+        <activity
+            android:name=".ui.system.launchModeTest.SingleTaskActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.system.HandlerTestActivity"
+            android:label="@string/title_activity_handler_test"
+            android:theme="@style/Theme.MyDemos.NoActionBar" />
+
         <receiver
             android:name=".ui.system.receiver.StickyBroadcastReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".ui.system.BroadcastTestActivity"

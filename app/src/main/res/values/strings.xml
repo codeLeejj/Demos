@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyDemos</string>
     <string name="title_home">System</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">UI</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_loader">LoaderActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -14,4 +14,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_handler_test">HandlerTestActivity</string>
 </resources>
