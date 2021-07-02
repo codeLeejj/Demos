@@ -10,7 +10,7 @@ class SingleInstanceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch_mode)
-
+        title = "SingleInstanceActivity"
         findViewById<Button>(R.id.btStandard).setOnClickListener {
             startActivity(Intent(this,StandardActivity::class.java))
         }

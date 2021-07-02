@@ -11,48 +11,51 @@ class StandardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch_mode)
+        title = "StandardActivity"
 
         findViewById<Button>(R.id.btStandard).setOnClickListener {
-            startActivity(Intent(this,StandardActivity::class.java))
+            startActivity(Intent(this, StandardActivity::class.java))
         }
         findViewById<Button>(R.id.btSingleTask).setOnClickListener {
-            startActivity(Intent(this,SingleTaskActivity::class.java))
+            startActivity(Intent(this, SingleTaskActivity::class.java))
         }
         findViewById<Button>(R.id.btSingleTop).setOnClickListener {
-            startActivity(Intent(this,SingleTopActivity::class.java))
+            startActivity(Intent(this, SingleTopActivity::class.java))
         }
         findViewById<Button>(R.id.btSingleInstance).setOnClickListener {
-            startActivity(Intent(this,SingleInstanceActivity::class.java))
+            startActivity(Intent(this, SingleInstanceActivity::class.java))
         }
 
-        Log.w("StandardActivity","onCreate")
+        Log.w("StandardActivity", "onCreate")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.w("StandardActivity","onStart")
+        Log.w("StandardActivity", "onStart")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.w("StandardActivity","onRestart")
+        Log.w("StandardActivity", "onRestart")
     }
+
     override fun onResume() {
         super.onResume()
-        Log.w("StandardActivity","onResume")
+        Log.w("StandardActivity", "onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.w("StandardActivity","onPause")
+        Log.w("StandardActivity", "onPause")
     }
+
     override fun onStop() {
         super.onStop()
-        Log.w("StandardActivity","onStop")
+        Log.w("StandardActivity", "onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.w("StandardActivity","onDestroy")
+        Log.w("StandardActivity", "onDestroy")
     }
 }

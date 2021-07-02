@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annis.mydemos.databinding.FragmentHomeBinding
 import com.annis.mydemos.ui.system.*
+import com.annis.mydemos.ui.system.launchModeTest.LaunchModeTestActivity
 import com.annis.mydemos.ui.system.launchModeTest.StandardActivity
 import com.annis.mydemos.ui.system.serviceTest.ServiceTestMainActivity
 import com.annis.mydemos.utils.FileUtil
@@ -93,7 +94,7 @@ open class HomeFragment : Fragment() {
             startActivity(Intent(activity, HandlerTestActivity::class.java))
         }
         binding.abtLaunchMode.setOnClickListener {
-            startActivity(Intent(activity, StandardActivity::class.java))
+            startActivity(Intent(activity, LaunchModeTestActivity::class.java))
         }
         return root
     }

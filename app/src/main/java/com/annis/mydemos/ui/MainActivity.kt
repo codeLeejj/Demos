@@ -1,4 +1,4 @@
-package com.annis.mydemos
+package com.annis.mydemos.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -12,8 +12,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.annis.mydemos.R
 import com.annis.mydemos.databinding.ActivityMainBinding
 import com.annis.mydemos.ui.main.systemTest.HomeFragment
+import com.annis.mydemos.utils.ActivityStack
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,8 +39,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        Log.w("MainActivity","${System.currentTimeMillis()}")
-        Log.w("MainActivity","${SystemClock.uptimeMillis()}")
+        Log.w("MainActivity", "${System.currentTimeMillis()}")
+        Log.w("MainActivity", "${SystemClock.uptimeMillis()}")
+
+
+        ActivityStack.getInstance().add(this)
+    }
+
+    override fun onDestroy() {
+        ActivityStack.getInstance().remove(this)
+        super.onDestroy()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -23,10 +23,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDemos">
-        <activity android:name=".ui.system.launchModeTest.SingleInstanceActivity"/>
-        <activity android:name=".ui.system.launchModeTest.SingleTopActivity" />
-        <activity android:name=".ui.system.launchModeTest.StandardActivity"
-            android:configChanges=""/>
+        <activity android:name=".ui.system.launchModeTest.LaunchModeTestActivity" />
+        <activity android:name=".ui.main.CarNumberSelectorActivity" />
+        <activity
+            android:name=".ui.system.launchModeTest.SingleInstanceActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.system.launchModeTest.SingleTopActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.system.launchModeTest.StandardActivity"
+            android:launchMode="standard" />
         <activity
             android:name=".ui.system.launchModeTest.SingleTaskActivity"
             android:launchMode="singleTask" />
@@ -69,7 +76,7 @@
             android:name=".ui.system.SoftCallListenerActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

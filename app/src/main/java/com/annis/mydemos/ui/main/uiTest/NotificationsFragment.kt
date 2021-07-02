@@ -37,7 +37,9 @@ class NotificationsFragment : Fragment() {
         binding.btTouchEvent.setOnClickListener {
 
         }
+        binding.btOtherContextToast.setOnClickListener {
 
+        }
         return root
     }
 

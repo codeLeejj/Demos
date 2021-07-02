@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.system.launchModeTest.SingleTaskActivity">
+
+    <Button
+        android:id="@+id/btSingleTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动SingleTask"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btStandard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动Standard"
+        app:layout_constraintTop_toBottomOf="@+id/btSingleTask" />
+
+    <Button
+        android:id="@+id/btSingleTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动SingleTop"
+        app:layout_constraintTop_toBottomOf="@+id/btStandard" />
+
+    <Button
+        android:id="@+id/btSingleInstance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动SingleInstance"
+        app:layout_constraintTop_toBottomOf="@+id/btSingleTop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.uiTest.NotificationsFragment">
-
-    <Button
-        android:id="@+id/btTouchEvent"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="事件分发"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btTouchEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="事件分发"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btOtherContextToast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other Context Toast"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
