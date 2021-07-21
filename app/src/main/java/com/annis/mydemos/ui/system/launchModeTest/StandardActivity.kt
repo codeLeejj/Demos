@@ -12,7 +12,7 @@ class StandardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch_mode)
         title = "StandardActivity"
-
+        Log.i("launchModeLog", "$this  onCreate")
         findViewById<Button>(R.id.btStandard).setOnClickListener {
             startActivity(Intent(this, StandardActivity::class.java))
         }
@@ -29,33 +29,39 @@ class StandardActivity : AppCompatActivity() {
         Log.w("StandardActivity", "onCreate")
     }
 
+    val NAME = "StandardActivity"
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.i("launchModeLog", "$this   onNewIntent")
+    }
+
     override fun onStart() {
         super.onStart()
-        Log.w("StandardActivity", "onStart")
+        Log.i("launchModeLog", "$this  onStart")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.w("StandardActivity", "onRestart")
+        Log.i("launchModeLog", "$this  onRestart")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.w("StandardActivity", "onResume")
+        Log.i("launchModeLog", "$this  onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.w("StandardActivity", "onPause")
+        Log.i("launchModeLog", "$this  onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.w("StandardActivity", "onStop")
+        Log.i("launchModeLog", "$this  onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.w("StandardActivity", "onDestroy")
+        Log.i("launchModeLog", "$this  onDestroy")
     }
 }

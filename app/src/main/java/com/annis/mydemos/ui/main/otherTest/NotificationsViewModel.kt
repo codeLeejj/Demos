@@ -1,4 +1,4 @@
-package com.annis.mydemos.ui.main.uiTest
+package com.annis.mydemos.ui.main.otherTest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -23,6 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDemos">
+        <activity android:name=".ui.ui.RefreshAndLoadActivity"></activity>
         <activity android:name=".ui.system.launchModeTest.LaunchModeTestActivity" />
         <activity android:name=".ui.main.CarNumberSelectorActivity" />
         <activity

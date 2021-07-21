@@ -5,9 +5,7 @@ import android.os.Parcelable;
 
 public class UserInformation implements Parcelable {
     public String name;
-
     public String address;
-
 
     @Override
     public int describeContents() {
